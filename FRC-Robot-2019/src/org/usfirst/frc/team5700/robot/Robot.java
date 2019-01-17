@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5700.robot;
 
+import org.usfirst.frc.team5700.robot.subsystems.CenterGrabber;
 import org.usfirst.frc.team5700.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -32,13 +33,15 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static DriveTrain drivetrain;
+	public static CenterGrabber centergrabber;
 
 	
 	@Override
 	public void robotInit() {
+		
 		oi = new OI();
 		drivetrain = new DriveTrain();
-		
+		centergrabber = new CenterGrabber();
 		
 		
 		
