@@ -26,7 +26,6 @@ public XboxController controller = new XboxController(0);
 	}
 
 	
-	
 	public XboxController.Thumbstick getLeftStick() {
 		return controller.leftStick;	
 	}
