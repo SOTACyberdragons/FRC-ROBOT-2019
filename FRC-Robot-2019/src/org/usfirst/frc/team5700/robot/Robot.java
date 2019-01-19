@@ -9,6 +9,11 @@ package org.usfirst.frc.team5700.robot;
 
 import org.usfirst.frc.team5700.robot.subsystems.DriveTrain;
 
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
@@ -120,5 +125,17 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	public static void initTalon(TalonSRX motor) {
+		motor.setNeutralMode(NeutralMode.Coast);
+		motor.neutralOutput();
+		motor.setSensorPhase(false);
+		motor.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
+		motor.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
+		motor.configNominalOutputForward(0.0,0);
+		motor.configNominalOutputReverse(0.0,0);
+		motor.configClosedloopRamp(0.5,0);
+		
+
 	}
 }
