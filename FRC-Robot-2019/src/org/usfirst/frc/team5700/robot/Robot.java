@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5700.robot;
 
 import org.usfirst.frc.team5700.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5700.robot.subsystems.Prototype;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
@@ -25,19 +26,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends IterativeRobot {
+	
 	private Command autonomousCommand;
 	public static Preferences prefs;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	
-	public static OI oi;
-	public static DriveTrain drivetrain;
 
+	public static DriveTrain drivetrain;
+	public static Prototype prototype;
+	public static OI oi;
 	
 	@Override
 	public void robotInit() {
-		oi = new OI();
+	
 		drivetrain = new DriveTrain();
+		prototype = new Prototype();
+		oi = new OI();
 		
 		
 		
@@ -73,7 +78,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+//		autonomousCommand = chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -82,7 +87,7 @@ public class Robot extends IterativeRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
-		// schedule the autonomous command (example)
+		//schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
@@ -105,6 +110,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+
 	}
 
 	/**

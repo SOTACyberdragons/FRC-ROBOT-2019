@@ -7,6 +7,12 @@
 
 package org.usfirst.frc.team5700.robot;
 
+import org.usfirst.frc.team5700.robot.commands.PistonIn;
+import org.usfirst.frc.team5700.robot.commands.PistonOut;
+
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -17,15 +23,20 @@ public XboxController controller = new XboxController(0);
 	
 	// Setting squaredInput to true decreases the sensitivity for tankdrive at lower speeds
 	private boolean squaredInput = true;
-
+	
+	JoystickButton pistonOut; 
+	JoystickButton pistonIn; 
 	
 	
 	public OI() {
-			
+		pistonOut = new JoystickButton(controller, 1);
+		pistonOut.whenPressed(new PistonOut());
+		pistonIn = new JoystickButton(controller, 2);
+		pistonIn.whenPressed(new PistonIn());
+
 		
 	}
 
-	
 	
 	public XboxController.Thumbstick getLeftStick() {
 		return controller.leftStick;	
